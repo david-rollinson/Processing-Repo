@@ -108,9 +108,9 @@ void applyMonochrome() {
        //img.pixels[calcIndex(i, j, img)] = c;
        
        if (red(c) < (bayer_grad / 2) || blue(c) < (bayer_grad / 2) || green(c) < (bayer_grad / 2)) {
-         c = color(255);
-       } else {
          c = color(0);
+       } else {
+         c = color(255);
        }
        //MONOCHROME EFFECT
        img.pixels[calcIndex(i, j, img)] = c;
