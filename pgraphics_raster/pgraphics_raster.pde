@@ -43,6 +43,8 @@ void draw() {
   drawOBJ();
   applyRaster();
   //image(img, 0, 0); //draw obj graphics 
+  
+  //DRAW GRADIENT TEXTURES AT EACH CORNER.
   image(mono, width-mono.width, height-mono.height); //draw gradient
   
   pushMatrix();
@@ -62,6 +64,7 @@ void draw() {
   rotate(-HALF_PI*3);
   image(mono, width-mono.width, height-mono.height);
   popMatrix();
+  //END GRADIENT TEXTURES. 
   
   //saveFrame("output/image####.png");
 }
@@ -186,7 +189,7 @@ void applyRaster() {
       
       //------------------------------
       //ASSIGN MONO STATES
-      assignState(mono, state, x, y, int(tileSize));
+      //assignState(mono, state, x, y, int(tileSize));
       
       //------------------------------
       //ALTERNATIVE: ASSIGN COLOUR.

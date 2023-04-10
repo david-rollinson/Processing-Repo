@@ -2,6 +2,7 @@ PImage img;
 float p = 0;
 float offsetX = 0;
 float offsetY = 0;
+float a = -90;
 
 int state;
 
@@ -14,9 +15,8 @@ void setup() {
 void draw() {
   image(img, offsetX, offsetY, 1024, 1024);
   if(state == 0){
-    float a = 0;
-    float sinA = sin(a);
-    a+=4;
+    float sinA = abs(sin(a)) * 128;
+    a+=0.01;
     offsetX = map(sinA, 0, 180, 0, -512);
     if(offsetX == -512) {
       state = 1;
