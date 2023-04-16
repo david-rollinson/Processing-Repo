@@ -7,13 +7,13 @@ float offset;
 float scale;
 
 void setup() {
-  size(640, 360, P3D);
-  img = createGraphics(640, 360, P3D);
+  size(384, 768, P3D);
+  img = createGraphics(384, 768, P3D);
   noStroke();
   fill(204);
   warp = loadShader("warp.frag", "warp.vert");
   warp.set("fraction", 1.0);
-  scale = 100;
+  scale = 80;
   warp.set("scale", scale);
   offset = 0;
   warp.set("offset", offset);

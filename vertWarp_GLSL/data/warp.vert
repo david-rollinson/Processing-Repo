@@ -17,21 +17,37 @@ varying vec4 vertTexCoord;
 varying vec3 vertNormal;
 varying vec3 vertLightDir;
 
+flat out int _index;
+
 void main() {
 
   vec3 posOffset = position.xyz;
+  _index = gl_VertexID;
+  vec4 pos;
   
   //multiply the position of each vertex to expand the model. 
   posOffset = posOffset * scale;
+  posOffset.x += 25.0;
   //flip upside down.
   posOffset.y = posOffset.y * -1;
   //reset the .w perspective component (default 1.0).
   //posOffset.w = 1.0; //abs(sin(offset));
   
-  posOffset.y += 10. * sin(offset + posOffset.y);
-  posOffset.x -= 10. * sin(offset + posOffset.x);
+  //posOffset.y += 10. * sin(offset + posOffset.y);
+  //posOffset.x -= 10. * sin(offset + posOffset.x);
   
-  vec4 pos = modelview * vec4(posOffset, 1.0);
+  if(mod(_index, 8) == 0){
+    //colour vertices red if they satisfy mod condition.
+    pos = (modelview * vec4(posOffset, 1.0)) + 0.5 * sin(offset) * (modelview * vec4(normal, 1));
+  } else if (mod(_index, 8) == 1) {
+    pos = (modelview * vec4(posOffset, 1.0)) + 0.5 * sin(offset) * (modelview * vec4(normal, 1));
+  } else if (mod(_index, 8) == 2) {
+    pos = (modelview * vec4(posOffset, 1.0)) + 0.5 * sin(offset) * (modelview * vec4(normal, 1));
+  } else if (mod(_index, 8) == 3) {
+    pos = (modelview * vec4(posOffset, 1.0)) + 0.5 * sin(offset) * (modelview * vec4(normal, 1));
+  } else {
+    pos = (modelview * vec4(posOffset, 1.0));
+  }
 
   gl_Position = projection * pos; 
   
